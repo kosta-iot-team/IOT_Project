@@ -6,13 +6,18 @@
         'HID'
     );
     $escaped=array(
-        'id' => mysqli_real_escape_string($conn,$_POST['id']),
+        'id' => mysqli_real_escape_string($conn,$_POST['id'])
     );
     $sql="select password from member_infor where id='{$escaped['id']}'";
     $result=mysqli_query($conn,$sql);
     while($password=mysqli_fetch_array($result)['password']){
         if($password==$_POST['password']){
-            echo "로그인 성공";
+            echo "
+            <form method='post' action='main.php' name='form'>
+                <input type='hidden' name='id' value='{$escaped['id']}'>
+            </form>
+            <script>form.submit()</script>
+            ";
         }else{
             echo "
                 <script>

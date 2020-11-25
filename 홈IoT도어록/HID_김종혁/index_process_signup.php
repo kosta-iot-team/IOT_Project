@@ -20,9 +20,10 @@
         ";
         $result=mysqli_query($conn,$sql);
         if(!$result){
-            echo "문제가 생겼습니다. 관리자에게 문의하세요.";
-            return false;
+            echo "관리자 등록 중 문제가 생겼습니다. 관리자에게 문의하세요.";
+            return;
         }
+        // 관리자 정보 등록
         $sql="
         insert into member_infor value(
             '{$escaped['name']}',
@@ -32,23 +33,23 @@
         ";
         $result=mysqli_query($conn,$sql);
         if($result){
-            echo "<script>alert('관리자로 회원가입 성공');location.href='index.php';</script>";
+            echo "<script>alert('관리자 가입 성공');location.href='index.php';</script>";
         }else{
-            echo "문제가 생겼습니다. 관리자에게 문의하세요.";
-            return false;
+            echo "관리자 가입 중 문제가 생겼습니다. 관리자에게 문의하세요.";
+            return;
         }
     }else{
-        // 회원 등록
+        // 회원인지 확인
         $sql="select name from member";
         $result=mysqli_query($conn,$sql);
-        // 맴버 등록 되있으면
         while($row=mysqli_fetch_array($result)){
+            // 회원이면
             if($row['name']==$escaped['name']){
+                // 정보 있는지 확인
                 $sql="select name from member_infor";
                 $result=mysqli_query($conn,$sql);
-                // 가입 되있는지 확인
                 while($row=mysqli_fetch_array($result)){
-                    // 가입 되있으면 돌려보내기
+                    // 정보 있으면 돌려보내기
                     if($row['name']==$_POST['name']){
                         echo "
                             <script>
@@ -57,16 +58,30 @@
                             </script>
                         ";
                         return;
-                        echo "
-                            <script>
-                                alert('return 오류.');
-                            </script>
-                        ";//삭제
                     }
                 }
-                // 등록 안되어있으면 회원 가입
-                // 아이디가 중복되는지 확인 
-                !!//수정
+                // 정보 없으니까
+                // 아이디 중복인지 확인 
+                $sql="select id from member_infor";
+                $result=mysqli_query($conn,$sql);
+                if(!$result){
+                    echo "아이디 조회 중 문제가 생겼습니다. 관리자에게 문의해주세요.";
+                    return;
+                }
+                while($row=mysqli_fetch_array($result)){
+                    // 중복이면 
+                    if($row['id']==$escaped['id']){
+                        // 뒤로보내기
+                        echo "
+                        <script>
+                            alert('중복되는 아이디 입니다.');
+                            history.back();
+                        </script>
+                        ";
+                        return;
+                    }
+                }
+                // 중복 아니니까 정보 등록
                 $sql="
                     insert into member_infor value(
                         '{$escaped['name']}',
@@ -76,19 +91,14 @@
                 ";
                 $result=mysqli_query($conn,$sql);
                 if($result){
-                    echo "<script>alert('회원가입 성공');location.href='index.php'</script>";
+                    echo "<script>alert('회원 가입 성공');location.href='index.php'</script>";
                 }else{
-                    echo "문제가 생겼습니다. 관리자에게 문의해주세요.";
+                    echo "회원 가입 중 문제가 생겼습니다. 관리자에게 문의해주세요.";
                     return;
-                    echo "
-                        <script>
-                            alert('return 오류.');
-                        </script>
-                    ";//삭제
                 }
             }
         }
-        // 맴버 등록 안되있으면
+        // 회원 아니면 뒤로 보내기
         echo "<script>alert('등록되지 않은 이름입니다.');history.back();</script>";
     }
 ?>
