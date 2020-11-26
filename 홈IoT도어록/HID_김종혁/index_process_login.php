@@ -10,7 +10,8 @@
     );
     $sql="select password from member_infor where id='{$escaped['id']}'";
     $result=mysqli_query($conn,$sql);
-    while($password=mysqli_fetch_array($result)['password']){
+    while($row=mysqli_fetch_array($result)){
+        $password=$row['password'];
         if($password==$_POST['password']){
             echo "
             <form method='post' action='main.php' name='form'>
@@ -28,6 +29,7 @@
         }
         return;
     }
+    
     echo "
         <script>
             alert('가입되지 않은 아이디입니다.');

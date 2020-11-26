@@ -10,7 +10,7 @@
         $conn=mysqli_connect('localhost','root','111111','hid');
         
         $id=$_POST['id'];
-        
+
         $sql="select name from member_infor where id='{$id}'";
         $result=mysqli_query($conn,$sql);
         $name=mysqli_fetch_array($result)['name'];
@@ -31,14 +31,16 @@
         if($member=='관리자'){
             echo 
             "
-                <form action='member_register.php' method='post'>
-                    <input type='hidden' name='id' value='{$id}'>
-                    <input type='submit' value='회원 등록'>
-                </form>
+            <form action='member_manage.php' method='post'>
+                <input type='hidden' name='id' value='$id'>
+                <input type='hidden' name='name' value='$name'>
+                <input type='submit' value='회원 관리'>
+            </form>
             ";
         }
     ?>
     <body>
+        
         <input type="button" value='로그아웃' onclick="location.href='index.php'">        
     </body>
 </html>
