@@ -17,7 +17,8 @@
         input::placeholder{
             color: #e6e7ee;
         }
-        input[type=text]{
+        
+        .textbox{
             color : #707070;
             border-radius : 7px;
             border : 2px solid #cccaca;
@@ -26,15 +27,11 @@
             padding-left : 15px;
             font-size : 15px;
         }
-        input[type=password]{
-            color : #707070;
-            border-radius : 7px;
-            border : 2px solid #cccaca;
-            margin : 0px 0px 15px 0px; 
-            height : 50px; width : 250px;
-            padding-left : 15px;
-            font-size : 15px;
+        .textbox:focus{
+            border:2px #2405f2 solid;
+            outline: none !important;
         }
+
         input[type=submit]{
             cursor : pointer;
             border-radius : 7px;
@@ -46,32 +43,8 @@
             font-size : 13px;
             letter-spacing: 1px;
         }
-        input[type=button]{
-            cursor : pointer;
-            border-radius : 0px;
-            border : 0px;
-            color : white;
-            margin : 0px 1px 0px 1px; 
-            height : 40px; width : 131px;
-        }
-        
-        input[type=text]:focus {
-            border:2px #2405f2 solid;
-            outline: none !important;
-        }
-        input[type=password]:focus {
-            border:2px #2405f2 solid;
-            outline: none !important;
-        }
         input[type=submit]:focus {
             outline: none !important;
-        }
-        input[type=button]:focus {
-            outline: none !important;
-        }
-        img{
-            width : 40px;
-            margin : 10px 0px 15px 0px; 
         }
     </style>
     <body>
@@ -122,13 +95,13 @@
                                 }
                         ">
                             <input type="hidden" name='admin' value="<?=$admin==''?>">
-                            <input type="text" name='name' placeholder='Name' maxlength='10'>
+                            <input class="textbox" type="text" name='name' placeholder='Name' maxlength='10'>
                             <br>
-                            <input type="text" name='id' placeholder='Id' maxlength='10'>
+                            <input class="textbox" type="text" name='id' placeholder='Id' maxlength='10'>
                             <br>
-                            <input type="password" name='password' placeholder='Password' maxlength='8'>
+                            <input class="textbox" type="password" name='password' placeholder='Password' maxlength='8'>
                             <br>
-                            <input type="password" name='password_confirm' placeholder='Password' maxlength='8'>
+                            <input class="textbox" type="password" name='password_confirm' placeholder='Password' maxlength='8'>
                             <br>
                             <input type="submit" value='회원가입'>
                         </form>
