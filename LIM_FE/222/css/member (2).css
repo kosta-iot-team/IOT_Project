@@ -1,0 +1,58 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font: 20px Nanum Gothic;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+li {
+	list-style: none;
+}
+
+#menu01 {
+	width: 100%;
+	height: 100px;
+	background: lightgrey;
+}
+
+	#menu01 ul li {
+		float: right;
+		width: 7%;
+		height: 100px;
+		text-align: center;
+		line-height: 100px
+	}
+
+#footer {
+	position: absolute;
+	width: 100%;
+	height: 100px;
+	background: lightgrey;
+	color: white;
+	text-align: right;
+	margin-top: 1000px;
+}
+
+h5 {
+	float: right;
+	width: 15%;
+	height: 50px;
+	text-align: center;
+	line-height: 100px
+}
+
+.member {
+	position:relative;
+	float: left;
+	width: 40%;
+	height: 500px;
+	line-height: 40px;
+	margin-left: 100px;
+}
