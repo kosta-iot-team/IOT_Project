@@ -1,0 +1,67 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+			
+body{
+	font: 20px Nanum Gothic;
+}
+		
+a {
+	text-decoration: none;
+	color: black;
+}
+			
+li{
+	list-style: none;
+}
+#menu01{ 
+          width: 100%;
+		  height: 100px;
+		  background: lightgrey;
+}
+#menu01  ul li{
+				float: right;
+				width: 7%;
+				height: 100px;
+				text-align: center;
+				line-height: 100px
+}
+
+#footer {
+	width: 100%;
+	height: 100px;
+	background: lightgrey;
+	color: white;
+	text-align: right;
+}
+
+h5 {
+	float: right;
+	width: 15%;
+	height: 50px;
+	text-align: center;
+	line-height: 100px
+}
+.button {
+			width: 30px;
+			height: 30px;
+			background-color: grey;
+			margin-left: 95%;
+			margin-top: 50px;
+			border-radius: 999px;
+}
+.button:hover {
+				background-color: white;
+}
+#one {
+		width: 100%;
+		height: 700px;
+		background-color: dimgray;
+		position:absolute;
+}
+#two{
+	margin-top:700px;
+}
+
+h1 { margin:}
